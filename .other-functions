@@ -1,0 +1,6 @@
+#!/bin/bash
+
+myip() {
+  local ip=$(curl -s https://api.ipify.org)
+  echo $ip
+}

@@ -3,6 +3,9 @@
 # Restore bash profile
 cp -f .bash_profile ~/
 
+# Restore functions
+cp -f .*-functions ~/
+
 # Restore VIM configuration
 cp -f .vimrc ~/
 

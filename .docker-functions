@@ -1,0 +1,72 @@
+#!/bin/bash
+
+awscli () {
+  docker run --rm -it \
+  -v "${HOME}/.aws:/root/.aws" \
+  nikovirtala/awscli:latest
+}
+
+aws-shell () {
+  docker run --rm -it \
+  -v "${HOME}/.aws:/root/.aws" \
+  nikovirtala/aws-shell:latest
+}
+
+cfssl () {
+  docker run --rm \
+  -v "$(pwd):/root" \
+  nikovirtala/cfssl:latest
+}
+
+cfssljson () {
+  docker run --rm -i \
+  -v "$(pwd):/root" \
+  nikovirtala/cfssljson:latest
+}
+
+jq () {
+  docker run --rm -i \
+  -v "$(pwd):/root" \
+  nikovirtala/jq:latest
+}
+
+kubectl () {
+  docker run --rm -it \
+  - "${HOME}/.kube:/root/.kube" \
+  -v "$(pwd):/root" \
+  nikovirtala/kubectl:latest
+}
+
+gcloud () {
+  docker run --rm -it \
+  -v "${HOME}/.config:/root/.config" \
+  -v "${HOME}/.ssh/:/root/.ssh" \
+  -v "${HOME}/.kube/:/root/.kube" \
+  google/cloud-sdk:alpine gcloud
+}
+
+packer () {
+  docker run --rm -it \
+  -v "$(pwd):/root" \
+  hashicorp/packer:light
+}
+
+packer-full () {
+  docker run --rm -it \
+  -v "$(pwd):/root" \
+  hashicorp/packer:full
+}
+
+terraform () {
+  docker run --rm -it \
+  -v "${HOME}/.aws:/root/.aws" \
+  -v "$(pwd):/root" \
+  hashicorp/terraform:light
+}
+
+terraform-full () {
+  docker run --rm -it \
+  -v "${HOME}/.aws:/root/.aws" \
+  -v "$(pwd):/root" \
+  hashicorp/terraform:full
+}
