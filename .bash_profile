@@ -16,7 +16,14 @@ if [ -f ${HOME}/.other-functions ]; then
   . ${HOME}/.other-functions
 fi
 
+if [ -f ${HOME}/.iterm2_shell_integration.bash ]; then
+  . ${HOME}/.iterm2_shell_integration.bash
+fi
+
+if [ -d ${HOME}/.infrakit ]; then
+  export INFRAKIT_HOME=${HOME}/.infrakit
+  export INFRAKIT_INSTANCE_HYPERKIT_DISCOVERY_HOSTPORT="127.0.0.1:24865"
+fi
+
 export PS1='`echo "${PWD%/*}" | sed -e "s;\(/.\)[^/]*;\1;g"`/${PWD##*/} \$ '
 
-export INFRAKIT_HOME=~/.infrakit
-export INFRAKIT_INSTANCE_HYPERKIT_DISCOVERY_HOSTPORT="127.0.0.1:24865"
