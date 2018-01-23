@@ -32,7 +32,7 @@ jq () {
 
 kubectl () {
   docker run --rm -it \
-  - "${HOME}/.kube:/root/.kube" \
+  -v "${HOME}/.kube:/root/.kube" \
   -v "$(pwd):/root" \
   nikovirtala/kubectl:latest
 }
