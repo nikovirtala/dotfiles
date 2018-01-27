@@ -42,7 +42,7 @@ gcloud () {
   -v "${HOME}/.config:/root/.config" \
   -v "${HOME}/.ssh/:/root/.ssh" \
   -v "${HOME}/.kube/:/root/.kube" \
-  google/cloud-sdk:alpine gcloud
+  google/cloud-sdk:alpine gcloud "$@"
 }
 
 packer () {
