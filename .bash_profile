@@ -1,3 +1,6 @@
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:~/bin
