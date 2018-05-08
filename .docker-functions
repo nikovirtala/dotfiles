@@ -4,25 +4,25 @@ awscli () {
   docker run --rm -it \
   -v $(pwd):/home/nikovirtala \
   -v "${HOME}/.aws:/home/nikovirtala/.aws" \
-  nikovirtala/awscli:latest
+  nikovirtala/awscli:latest "$@"
 }
 
 aws-shell () {
   docker run --rm -it \
   -v "${HOME}/.aws:/root/.aws" \
-  nikovirtala/aws-shell:latest
+  nikovirtala/aws-shell:latest "$@"
 }
 
 cfssl () {
   docker run --rm \
   -v "$(pwd):/home/nikovirtala" \
-  nikovirtala/cfssl:latest
+  nikovirtala/cfssl:latest "$@"
 }
 
 cfssljson () {
   docker run --rm -i \
   -v "$(pwd):/home/nikovirtala" \
-  nikovirtala/cfssljson:latest
+  nikovirtala/cfssljson:latest "$@"
 }
 
 jq () {
@@ -44,33 +44,33 @@ gcloud () {
   -v "${HOME}/.config:/home/nikovirtala/.config" \
   -v "${HOME}/.ssh/:/home/nikovirtala/.ssh" \
   -v "${HOME}/.kube/:/home/nikovirtala/.kube" \
-  google/cloud-sdk:alpine gcloud "$@"
+  nikovirtala/gcloud:latest "$@"
 }
 
 packer () {
   docker run --rm -it \
   -v "$(pwd):/root" \
-  hashicorp/packer:light
+  hashicorp/packer:light "$@"
 }
 
 packer-full () {
   docker run --rm -it \
   -v "$(pwd):/root" \
-  hashicorp/packer:full
+  hashicorp/packer:full "$@"
 }
 
 terraform () {
   docker run --rm -it \
   -v "${HOME}/.aws:/root/.aws" \
   -v "$(pwd):/root" \
-  hashicorp/terraform:light
+  hashicorp/terraform:light "$@"
 }
 
 terraform-full () {
   docker run --rm -it \
   -v "${HOME}/.aws:/root/.aws" \
   -v "$(pwd):/root" \
-  hashicorp/terraform:full
+  hashicorp/terraform:full "$@"
 }
 
 get-docker-node-ip () {
