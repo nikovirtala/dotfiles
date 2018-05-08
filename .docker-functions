@@ -2,7 +2,8 @@
 
 awscli () {
   docker run --rm -it \
-  -v "${HOME}/.aws:/root/.aws" \
+  -v $(pwd):/home/nikovirtala \
+  -v "${HOME}/.aws:/home/nikovirtala/.aws" \
   nikovirtala/awscli:latest
 }
 
@@ -14,34 +15,35 @@ aws-shell () {
 
 cfssl () {
   docker run --rm \
-  -v "$(pwd):/root" \
+  -v "$(pwd):/home/nikovirtala" \
   nikovirtala/cfssl:latest
 }
 
 cfssljson () {
   docker run --rm -i \
-  -v "$(pwd):/root" \
+  -v "$(pwd):/home/nikovirtala" \
   nikovirtala/cfssljson:latest
 }
 
 jq () {
   docker run --rm -i \
-  -v "$(pwd):/root" \
-  nikovirtala/jq:latest
+  -v "$(pwd):/home/nikovirtala" \
+  nikovirtala/jq:latest "$@"
 }
 
 kubectl () {
-  docker run --rm -it \
-  -v "${HOME}/.kube:/root/.kube" \
-  -v "$(pwd):/root" \
-  nikovirtala/kubectl:latest
+  docker run --rm -i \
+    -v "$(pwd):/home/nikovirtala" \
+    -v "${HOME}/.kube:/home/nikovirtala/.kube" \
+    nikovirtala/kubectl:latest "$@"
 }
 
 gcloud () {
   docker run --rm -it \
-  -v "${HOME}/.config:/root/.config" \
-  -v "${HOME}/.ssh/:/root/.ssh" \
-  -v "${HOME}/.kube/:/root/.kube" \
+  -v "$(pwd):/home/nikovirtala" \
+  -v "${HOME}/.config:/home/nikovirtala/.config" \
+  -v "${HOME}/.ssh/:/home/nikovirtala/.ssh" \
+  -v "${HOME}/.kube/:/home/nikovirtala/.kube" \
   google/cloud-sdk:alpine gcloud "$@"
 }
 
@@ -84,3 +86,4 @@ get-ucp-bundle () {
   # Download the client certificate bundle
   curl -k -H "Authorization: Bearer ${AUTHTOKEN}" https://${UCPFQDN}/api/clientbundle -o ucp-bundle-for-${UCPFQDN}.zip
 }
+
