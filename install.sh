@@ -3,7 +3,7 @@
 # install git prompt
 git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
 
-# add stuff to bashrc
+# add stuff to dotfiles
 cat bashrc >>~/.bashrc
 cat gitconfig >>~/.gitconfig
 cat gitignore_global >>~/.gitignore_global
