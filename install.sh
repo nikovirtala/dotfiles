@@ -9,3 +9,4 @@ cat gitconfig >>~/.gitconfig
 cat gitignore_global >>~/.gitignore_global
 cat npmrc >>~/.npmrc
 cat vimrc >>~/.vimrc
+mkdir ~/.docker && cat docker/config.json >>~/.docker/config.json
